@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+  /* body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background-color: #f8f8fb;
+      color: #1a1a1a;
+    }
+    */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      color: #111;
+      line-height: 1.6;
+    }
