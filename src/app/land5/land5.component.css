@@ -1,6 +1,8 @@
 
     .hero {
-      background: url('https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+       background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
       min-height: 100vh;
       background-color: #000;
       display: flex;
@@ -269,3 +271,23 @@
     height: 90px;
   }
 }
+.footer {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+.footer img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  filter: invert(1);
+  transition: transform 0.3s;
+}
+
+.footer img:hover {
+  transform: scale(1.1);
+}
+

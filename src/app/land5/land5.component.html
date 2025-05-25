@@ -2,119 +2,87 @@
 
 
 
+<section class="hero"    [ngStyle]="{
+    'background-image': 'url(' + dataH.hero.back + ')' } ">
+  <div class="hero-content fade-in-section" #animatedSection >
+    <img [src]="dataH.hero.logo" alt="logo" class="hero-logo" />
+    <h1>{{ dataH.hero.title }}</h1>
+    <h1>{{ dataH.hero.subtitle }}</h1>
+    <p>{{ dataH.hero.description }}</p>
+    <a class="btn">
+      <span>{{ dataH.hero.cta.text }}</span>
+      <span class="arrow">{{ dataH.hero.cta.icon }}</span>
+    </a>
+  </div>
+</section>
 
-  <section class="hero">
-    <div class="hero-content fade-in-section" #animatedSection>
-       <img src="https://www.heart-of-carthage-dubai.com/assets/img/logo.png" alt="logo" class="hero-logo" />
-      <h1> بكم في منصتنا مرحباً بكم في منصتنا</h1>
-      <h1>🔥  🔥  🔥</h1>
-      <p> إكتشف منتوجنا الجديد </p>
-          
-      <a  class="btn"> <span>ابدأ الآن</span>
-  <span class="arrow">↓</span></a>
-    </div>
-  </section>
 
   <!-- Section 2: Image + Paragraph -->
-  <section class="about fade-in-section" #animatedSection>
-    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="صورة تعريفية">
-    <div>
-      <p>
-        نحن فريق مميز يهدف إلى تقديم أفضل الخدمات الرقمية لعملائنا الكرام. نعمل بجد لضمان جودة المحتوى والتصميم والتجربة الكاملة للمستخدم.
-      </p>
-      <ul >
-        <li>✅ جودة عالية في تقديم الخدمات</li>
-        <li>✅ دعم تقني متواصل</li>
-        <li>✅ فريق محترف ومؤهل</li>
-        <li>✅ أسعار تنافسية</li>
-      </ul>
-    </div>
-  </section>
+ <section *ngIf="dataH?.about" class="about fade-in-section" #animatedSection>
+  <img [src]="dataH.about.image" alt="صورة تعريفية" />
+  <div>
+    <p>{{ dataH.about.text }}</p>
+    <ul>
+      <li *ngFor="let point of dataH.about.points">✅ {{ point }}</li>
+    </ul>
+  </div>
+</section>
+
   <div class="fade-in-section" #animatedSection> <app-landing-page></app-landing-page> </div>
 
-  <!-- Section 3: Grid Images -->
-  <!-- <section class="gallery fade-in-section" #animatedSection>
-    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=500&q=80" alt="صورة 1">
-    <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=500&q=80" alt="صورة 2">
-    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=80" alt="صورة 3">
-  </section> -->
-  <section class="feature-video-section">
+
+ <section *ngIf="dataH?.video_features" class="feature-video-section fade-in-section" #animatedSection>
   <div class="features-text">
-    <h2>تكنولوجيا ذكية لخدمتك</h2>
-    <div class="feature-item">
-      <i class="fas fa-microchip"></i>
+    <h2>{{ dataH.video_features.title }}</h2>
+
+    <div *ngFor="let feature of dataH.video_features.features" class="feature-item">
+      <i class="fas" [ngClass]="feature.icon"></i>
       <div>
-        <h4>شاشة لمس ذكية</h4>
-        <p>تحكم كامل في الإعدادات، برامج التدريب، الموسيقى، والبيانات مباشرة من الشاشة الذكية.</p>
-      </div>
-    </div>
-    <div class="feature-item">
-      <i class="fas fa-cogs"></i>
-      <div>
-        <h4>نظام راحة متطور</h4>
-        <p>راحة استثنائية بفضل نظام امتصاص الصدمات ومرونة سطح الجري حسب ذوقك.</p>
-      </div>
-    </div>
-     <div class="feature-item">
-      <i class="fas fa-cogs"></i>
-      <div>
-        <h4>نظام راحة متطور</h4>
-        <p>راحة استثنائية بفضل نظام امتصاص الصدمات ومرونة سطح الجري حسب ذوقك.</p>
-      </div>
-    </div>
-     <div class="feature-item">
-      <i class="fas fa-cogs"></i>
-      <div>
-        <h4>نظام راحة متطور</h4>
-        <p>راحة استثنائية بفضل نظام امتصاص الصدمات ومرونة سطح الجري حسب ذوقك.</p>
-      </div>
-    </div>
-     <div class="feature-item">
-      <i class="fas fa-cogs"></i>
-      <div>
-        <h4>نظام راحة متطور</h4>
-        <p>راحة استثنائية بفضل نظام امتصاص الصدمات ومرونة سطح الجري حسب ذوقك.</p>
+        <h4>{{ feature.title }}</h4>
+        <p>{{ feature.description }}</p>
       </div>
     </div>
   </div>
 
   <div class="video-wrapper">
-    <video controls poster="assets/images/poster.jpg">
-      <source src="assets/videos/demo.mp4" type="video/mp4">
+    <video controls [poster]="dataH.video_features.video.poster">
+      <source [src]="dataH.video_features.video.src" type="video/mp4">
       متصفحك لا يدعم تشغيل الفيديو.
     </video>
   </div>
 </section>
-<section class="gallery-section">
+
+<section *ngIf="dataH?.gallery" class="gallery-section fade-in-section" #animatedSection>
   <div class="gallery-text">
-    <h2>شوف بعض صور المنتوج من زوايا مختلفة</h2>
-    <p>صور حقيقية 100%، تم تصويرها من عملائنا في تونس. الجودة واضحة والخدمة مضمونة.</p>
+    <h2>{{ dataH.gallery.title }}</h2>
+    <p>{{ dataH.gallery.description }}</p>
   </div>
 
   <div class="gallery-images">
-    <img src="https://img.freepik.com/psd-premium/arriere-plan-vitrine-du-produit_597316-255.jpg?semt=ais_hybrid&w=740" alt="صورة 1" />
-    <img src="https://img.freepik.com/psd-premium/arriere-plan-vitrine-du-produit_597316-255.jpg?semt=ais_hybrid&w=740" alt="صورة 2" />
-    <img src="https://img.freepik.com/psd-premium/arriere-plan-vitrine-du-produit_597316-255.jpg?semt=ais_hybrid&w=740" alt="صورة 3" />
-        <img src="https://img.freepik.com/psd-premium/arriere-plan-vitrine-du-produit_597316-255.jpg?semt=ais_hybrid&w=740" alt="صورة 3" />
-
-            <img src="https://img.freepik.com/psd-premium/arriere-plan-vitrine-du-produit_597316-255.jpg?semt=ais_hybrid&w=740" alt="صورة 3" />
-    <img src="https://img.freepik.com/psd-premium/arriere-plan-vitrine-du-produit_597316-255.jpg?semt=ais_hybrid&w=740" alt="صورة 3" />
-
+    <img *ngFor="let img of dataH.gallery.images" [src]="img" alt="صورة من المعرض" />
   </div>
 </section>
 
-  <footer style="background-color: #111; color: #fff; text-align: center; padding: 20px; font-size: 0.9rem;">
-  <p>© 2025 جميع الحقوق محفوظة - منصتنا الرقمية</p>
+<footer *ngIf="dataH?.footer" class="footer fade-in-section" #animatedSection>
+  <p>{{ dataH.footer.text }}</p>
+
   <div style="margin-top: 10px;">
-    <a href="#" style="margin: 0 10px; color: white; text-decoration: none; font-size: 1.5rem;">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width: 24px; height: 24px; vertical-align: middle; filter: invert(1);">
+    <a *ngIf="dataH.footer.social.facebook" [href]="dataH.footer.social.facebook" target="_blank" style="margin: 0 10px;">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
+           alt="Facebook"
+           style="width: 24px; height: 24px; vertical-align: middle; filter: invert(1);" />
     </a>
-    <a href="#" style="margin: 0 10px; color: white; text-decoration: none; font-size: 1.5rem;">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle; filter: invert(1);">
+    <a *ngIf="dataH.footer.social.instagram" [href]="dataH.footer.social.instagram" target="_blank" style="margin: 0 10px;">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+           alt="Instagram"
+           style="width: 24px; height: 24px; vertical-align: middle; filter: invert(1);" />
     </a>
-    <a href="#" style="margin: 0 10px; color: white; text-decoration: none; font-size: 1.5rem;">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok" style="width: 24px; height: 24px; vertical-align: middle; filter: invert(1);">
+    <a *ngIf="dataH.footer.social.tiktok" [href]="dataH.footer.social.tiktok" target="_blank" style="margin: 0 10px;">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"
+           alt="TikTok"
+           style="width: 24px; height: 24px; vertical-align: middle; filter: invert(1);" />
     </a>
   </div>
 </footer>
+
 
