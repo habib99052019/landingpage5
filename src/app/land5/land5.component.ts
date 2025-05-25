@@ -84,7 +84,7 @@ constructor(
     }
   },
   "pixels": {
-  "facebook": ["1766536320768300"]
+  "facebook": ["1766536320768300","1306627843921894"]
 }
 }
     const pixels = this.dataH?.pixels?.facebook;
